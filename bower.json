@@ -1,0 +1,36 @@
+{
+  "name": "angular-richu-auth",
+  "version": "0.1.27",
+  "homepage": "http://git.veroeroe.com/therichu/angular-richu-auth",
+  "authors": [
+    "TaeYeong KIM<therichu@gmail.com>"
+  ],
+  "main": [
+    "./dist/richu-auth.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://git.veroeroe.com/therichu/angular-richu-auth.git"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "angular": "~1.2.28",
+    "angular-ui-router": "~0.2.14",
+    "lodash": "~3.8.0",
+    "angular-local-storage": "~0.1.5",
+    "angular-resource": "~1.2.28",
+    "angular-toastr": "~0.4.x"
+  },
+  "appPath": "example",
+  "moduleName": "richu.auth",
+  "fileName": "richu-auth",
+  "devDependencies": {
+    "angular-mocks": "~1.2.28"
+  }
+}

@@ -1,0 +1,48 @@
+<form class="reg-page" name="login" ng-submit="startLogin()">
+  <div class="reg-header">
+    <h2>로그인</h2>
+  </div>
+  <div class="input-group margin-bottom-20">
+    <span class="input-group-addon">
+      <i class="fa fa-user"></i>
+    </span>
+    <input class="form-control" name="identifier" ng-model="loginForm.identifier"
+      placeholder="Username or Email" required type="text"/>
+    <div class="form-errors" data-ng-if="login.identifier.$dirty">
+      <div class="form-error" ng-show="login.identifier.$error.maxlength">50자 이상을 넘을 수
+        없습니다.</div>
+      <div class="form-error" ng-show="login.identifier.$error.minlength">계정이 너무
+        짧습니다.</div>
+      <div class="form-error" ng-show="login.identifier.$error.required">필수 입력
+        항목입니다.</div>
+    </div>
+  </div>
+  <div class="input-group margin-bottom-20">
+    <span class="input-group-addon">
+      <i class="fa fa-lock"></i>
+    </span>
+    <input class="form-control" name="password" ng-model="loginForm.password"
+      placeholder="Password" required type="password"/>
+    <div class="form-errors" data-ng-if="login.password.$dirty">
+      <div class="form-error" ng-show="login.password.$error.maxlength">50자 이상을 넘을 수
+        없습니다.</div>
+      <div class="form-error" ng-show="login.password.$error.minlength">비밀번호가 너무
+        짧습니다.</div>
+      <div class="form-error" ng-show="login.password.$error.required">필수 입력
+        항목입니다.</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 checkbox">
+      <!-- <label><input type="checkbox" ng-model="rememberme"> Stay signed in</label> -->
+    </div>
+    <div class="col-md-6 text-right">
+      <button class="btn btn-success pull-right" data-ng-disabled="login.$invalid"
+        type="submit">Login</button>
+    </div>
+    패스워드 찾기
+  </div>
+  <hr>
+  <h4>패스워드가 기억나지 않으세요?</h4>
+    <p>걱정마세요, <a class="color-green" href="#">여기</a>를 클릭하여 패스워드를 재설정 하실 수 있습니다.</p>
+</form>

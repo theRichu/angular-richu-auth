@@ -1,0 +1,124 @@
+<form name="signup" ng-submit="join(signupForm)" novalidate="">
+  <div class="reg-block-header">
+    <h2>회원가입</h2>
+    <p>이미 가입하셨나요? 그렇다면
+      <a class="btn btn-info" data-ui-sref="anon.login">로그인</a>
+      하세요</p>
+  </div>
+  <label ng-class="{ 'has-error' : signup.name.$invalid && signup.name.$dirty}">이름
+    <span class="color-red">*</span>
+  </label>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="fa fa-user"></i>
+    </span>
+    <input class="form-control" name="name" ng-maxlength="50" ng-minlength="2"
+      placeholder="이름" required type="text" x-ng-model-options="{ updateOn: 'blur' }"
+      x-ng-model="signupForm.name"/>
+  </div>
+  <div class="form-errors" data-ng-if="signup.name.$dirty">
+    <div class="form-error" ng-show="signup.name.$error.maxlength">50자 이상을 넘을 수
+      없습니다.</div>
+    <div class="form-error" ng-show="signup.name.$error.minlength">이름이 너무
+      짧습니다.</div>
+    <div class="form-error" ng-show="signup.name.$error.required">필수 입력 항목입니다.</div>
+  </div>
+  <label
+    ng-class="{ 'has-error' : signup.username.$invalid &&
+    signup.username.$dirty}">아이디
+    <span class="color-red">*</span>
+  </label>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="fa fa-user"></i>
+    </span>
+    <input class="form-control" name="username"
+      ng-change="checkIfExists(signup.username)" ng-maxlength="50" ng-minlength="2" placeholder="아이디" required type="text"
+      x-ng-model-options="{ updateOn: 'blur' }" x-ng-model="signupForm.username">
+  </div>
+  <div class="form-errors" data-ng-if="signup.username.$dirty">
+    <div class="form-error" ng-show="signup.username.$error.required">필수 입력
+      항목입니다.</div>
+    <div class="form-error" ng-show="signup.username.$error.maxlength">50자 이상을 넘을 수
+      없습니다.</div>
+    <div class="form-error" ng-show="signup.username.$error.minlength">아이디가 너무
+      짧습니다.</div>
+    <div class="form-error" ng-show="signup.username.$error.exists">이미 가입되어
+      있습니다.</div>
+  </div>
+  <label ng-class="{ 'has-error' : signup.email.$invalid && signup.email.$dirty}">
+    이메일
+    <span class="color-red">*</span>
+  </label>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="fa fa-lock"></i>
+    </span>
+    <input class="form-control" name="email"
+      ng-change="checkIfEmailExists(signup.email)" ng-maxlength="255" ng-minlength="2" placeholder="이메일" required type="email"
+      x-ng-model-options="{ updateOn: 'blur' }" x-ng-model="signupForm.email">
+  </div>
+  <div class="form-errors" data-ng-if="signup.email.$dirty">
+    <div class="form-error" ng-show="signup.email.$error.required">필수 입력
+      항목입니다.</div>
+    <div class="form-error" ng-show="signup.email.$error.maxlength">255자 이상을 넘을 수
+      없습니다.</div>
+    <div class="form-error" ng-show="signup.email.$error.minlength">이메일 주소가 너무
+      짧습니다.</div>
+    <div class="form-error" ng-show="signup.email.$error.exists">이미 가입되어 있습니다.</div>
+  </div>
+  <label
+    ng-class="{ 'has-error' : signup.password.$invalid && signup.password.$dirty,
+    'valid-lr' : !signup.confirmation.$error}">
+    비밀번호
+    <span class="color-red">*</span>
+  </label>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="fa fa-lock"></i>
+    </span>
+    <input class="form-control" compare-to="confirmPassword" name="password"
+      ng-maxlength="25" ng-minlength="8" placeholder="비밀번호" required type="password"
+      x-ng-model="signupForm.password">
+  </div>
+  <div class="form-errors" data-ng-if="signup.password.$dirty">
+    <div class="form-error" ng-show="signup.password.$error.required">필수 입력
+      항목입니다.</div>
+    <div class="form-error" ng-show="signup.password.$error.maxlength">25자 이상을 넘을 수
+      없습니다.</div>
+    <div class="form-error" ng-show="signup.password.$error.minlength">비밀번호는 8자 이상으로
+      입력해주세요</div>
+    <div class="form-error" ng-if="signup.confirmation.$dirty"
+      ng-show="signup.password.$modelValue !==
+      signup.confirmation.$modelValue">입력한
+      비밀번호가 서로 다릅니다.</div>
+  </div>
+  <label
+    ng-class="{ 'has-error' : signup.confirmation.$invalid &&
+    signup.confirmation.$dirty}">
+    비밀번호 확인
+    <span class="color-red">*</span>
+  </label>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="fa fa-key"></i>
+    </span>
+    <input class="form-control" name="confirmation" ng-maxlength="25" ng-minlength="8"
+      placeholder="비밀번호" required type="password" x-ng-model="confirmPassword">
+  </div>
+  <hr>
+    <div class="row">
+      <div class="col-lg-6 checkbox">
+        <label>
+          <input name="agree" required type="checkbox" x-ng-model="agree">
+          <a class="color-green" href="page_terms.html">이용약관</a>에 동의합니다.
+        </label>
+      </div>
+    </div>
+    <button class="btn btn-block btn-success"
+      data-ng-disabled="signup.$invalid || signupForm.loading" type="submit">
+      <span data-ng-show="!loginForm.loading">가입하기</span>
+      <span class="fa fa-spinner" data-ng-show="loginForm.loading"></span>
+      <span data-ng-show="loginForm.loading">처리중입니다..</span>
+    </button>
+  </form>
