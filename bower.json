@@ -1,7 +1,7 @@
 {
   "name": "angular-richu-auth",
   "version": "0.1.27",
-  "homepage": "http://git.veroeroe.com/therichu/angular-richu-auth",
+  "homepage": "https://github.com/theRichu/angular-richu-auth.git",
   "authors": [
     "TaeYeong KIM<therichu@gmail.com>"
   ],
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://git.veroeroe.com/therichu/angular-richu-auth.git"
+    "url": "https://github.com/theRichu/angular-richu-auth.git"
   },
   "license": "MIT",
   "ignore": [
